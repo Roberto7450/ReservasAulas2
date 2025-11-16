@@ -88,12 +88,8 @@ public class ServiceReserva {
         Horario horario = repositorioHorario.findById(request.getHorarioId())
                 .orElseThrow(() -> new EntityNotFoundException("Horario no encontrado con id: " + request.getHorarioId()));
 
-        Usuario usuario = repositorioUsuario.findById(request.getUsuarioId())
-                .orElseThrow(() -> new EntityNotFoundException("Usuario no encontrado con id: " + request.getUsuarioId()));
-
         reserva.setAula(aula);
         reserva.setHorario(horario);
-        reserva.setUsuario(usuario);
         reserva.setFecha(request.getFecha());
         reserva.setMotivo(request.getMotivo());
         reserva.setAsistentes(request.getAsistentes());

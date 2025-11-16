@@ -20,10 +20,6 @@ public class ReservaRequest {
     @Positive(message = "El ID del aula debe ser mayor que 0")
     private Long aulaId; // reserva -> aula
 
-    @NotNull(message = "El ID del usuario no puede ser nulo")
-    @Positive(message = "El ID del usuario debe ser mayor que 0")
-    private Long usuarioId; // reserva -> usuario
-
     @NotBlank(message = "El motivo no puede estar vacío")
     @Size(min = 3, max = 200, message = "El motivo debe tener entre 3 y 200 caracteres")
     private String motivo;
