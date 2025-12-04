@@ -63,6 +63,8 @@ public class SecurityConfig {
 
                         // Todo lo demás requiere autenticación
                         .anyRequest().authenticated()
+                        .requestMatchers("/", "/index.html", "/static/**", "/frontend/**").permitAll()
+
                 )
 
                 // Configurar validación automática de tokens JWT
