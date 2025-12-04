@@ -67,12 +67,13 @@ public class ControllerAuth {
             Usuario usuario = new Usuario();
             usuario.setEmail(registerRequest.email());
             usuario.setPassword(passwordEncoder.encode(registerRequest.password()));  // Cifrar password
-            if (!registerRequest.role().equals("ROLE_ADMIN")) {
-                usuario.setRoles("ROLE_PROFESOR");
-            } else {
-                usuario.setRoles(registerRequest.role());
-            }
 
+            // Asignar rol: si no se proporciona o no es ADMIN, asignar PROFESOR
+            if (registerRequest.role() != null && registerRequest.role().equals("ROLE_ADMIN")) {
+                usuario.setRoles("ROLE_ADMIN");
+            } else {
+                usuario.setRoles("ROLE_PROFESOR");
+            }
 
             usuario.setEnabled(true);
 
@@ -83,7 +84,7 @@ public class ControllerAuth {
 
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(Map.of("error", "Error al registrar usuario"));
+                    .body(Map.of("error", "Error al registrar usuario: " + e.getMessage()));
         }
     }
 

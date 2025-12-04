@@ -13,6 +13,6 @@ public record RegisterRequest(
         @Size(min = 6, message = "La contraseña debe tener al menos 6 caracteres")
         String password,
 
-        @NotBlank(message = "El rol es obligatorio")
+        // El rol es opcional, por defecto será ROLE_PROFESOR
         String role
 ) {}
