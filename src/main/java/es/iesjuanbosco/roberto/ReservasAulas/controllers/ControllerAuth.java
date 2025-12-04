@@ -67,7 +67,7 @@ public class ControllerAuth {
             Usuario usuario = new Usuario();
             usuario.setEmail(registerRequest.email());
             usuario.setPassword(passwordEncoder.encode(registerRequest.password()));  // Cifrar password
-            usuario.setRoles("ROLE_PROFESOR");  // Rol por defecto
+            usuario.setRoles(registerRequest.role());
             usuario.setEnabled(true);
 
             usuarioRepository.save(usuario);
